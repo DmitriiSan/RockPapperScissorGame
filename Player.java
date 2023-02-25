@@ -2,7 +2,7 @@ package com.homework;
 import java.util.Random;
 public class Player {
 
-    private String name = "Bot";
+    private String name;
     private VARIANTS choice;
 
     public Player (VARIANTS choice, String name) {
@@ -11,22 +11,28 @@ public class Player {
     }
 
     public Player () {
-        double random = Math.random();
-        random = random * 3 + 1;
-        int randomInt = (int) random;
-        switch (randomInt){
-            case 1: choice = VARIANTS.PAPER; break;
-            case 2: choice = VARIANTS.ROCK; break;
-            case 3: choice = VARIANTS.SCISSORS; break;
+        this.name = "Bot";
+        this.choice = random();
+    }
+
+    private VARIANTS random () {
+        int rnd = (int) ((Math.random() * 3 + 1));
+        switch (rnd) {
+            case 1:
+                return VARIANTS.PAPER;
+            case 2:
+                return VARIANTS.ROCK;
+            default:
+                return VARIANTS.SCISSORS;
         }
     }
 
-    public String whoWins (Player firstPlyer, Player secondPlayer) {
-            if ((firstPlyer.choice == VARIANTS.PAPER && secondPlayer.choice == VARIANTS.ROCK) ||
-            (firstPlyer.choice == VARIANTS.SCISSORS && secondPlayer.choice == VARIANTS.PAPER) ||
-            (firstPlyer.choice == VARIANTS.ROCK && secondPlayer.choice == VARIANTS.SCISSORS)) {
-                return "The winner is a player named: " + firstPlyer.name;
-            } else if (firstPlyer.choice == secondPlayer.choice) {
+    public String whoWins (Player firstPlayer, Player secondPlayer) {
+            if ((firstPlayer.choice == VARIANTS.PAPER && secondPlayer.choice == VARIANTS.ROCK) ||
+            (firstPlayer.choice == VARIANTS.SCISSORS && secondPlayer.choice == VARIANTS.PAPER) ||
+            (firstPlayer.choice == VARIANTS.ROCK && secondPlayer.choice == VARIANTS.SCISSORS)) {
+                return "The winner is a player named: " + firstPlayer.name;
+            } else if (firstPlayer.choice == secondPlayer.choice) {
                 return "Nobody won";
             } else {
                 return "The winner is a player named: " + secondPlayer.name;

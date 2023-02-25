@@ -16,7 +16,7 @@ public class Player {
     }
 
     private VARIANTS random () {
-        int rnd = (int) ((Math.random() * 3 + 1));
+        int rnd = (int) (Math.random() * 3 + 1);
         switch (rnd) {
             case 1:
                 return VARIANTS.PAPER;

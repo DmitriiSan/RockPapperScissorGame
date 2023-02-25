@@ -11,28 +11,26 @@ public class Player {
     }
 
     public Player () {
-        Random random = new Random();
-        this.choice = VARIANTS.randomVARIANTS();
+        double random = Math.random();
+        random = random * 3 + 1;
+        int randomInt = (int) random;
+        switch (randomInt){
+            case 1: choice = VARIANTS.PAPER; break;
+            case 2: choice = VARIANTS.ROCK; break;
+            case 3: choice = VARIANTS.SCISSORS; break;
+        }
     }
 
     public String whoWins (Player firstPlyer, Player secondPlayer) {
-        String result = "";
-        if (firstPlyer.choice == VARIANTS.PAPER && secondPlayer.choice == VARIANTS.ROCK){
-            result = "Победил: " + firstPlyer.name;
-            return result;
-        } else if (firstPlyer.choice == VARIANTS.SCISSORS && secondPlayer.choice == VARIANTS.ROCK) {
-            result = "Победил: " + firstPlyer.name;
-            return result;
-        } else if (firstPlyer.choice == VARIANTS.ROCK && secondPlayer.choice == VARIANTS.SCISSORS) {
-            result = "Победил: " + firstPlyer.name;
-            return result;
-        } else if (firstPlyer.choice == secondPlayer.choice) {
-            result = "Ничья";
-            return result;
-        } else {
-        result = "Победил: " + secondPlayer.name;
-        return result;
-         }
+            if ((firstPlyer.choice == VARIANTS.PAPER && secondPlayer.choice == VARIANTS.ROCK) ||
+            (firstPlyer.choice == VARIANTS.SCISSORS && secondPlayer.choice == VARIANTS.PAPER) ||
+            (firstPlyer.choice == VARIANTS.ROCK && secondPlayer.choice == VARIANTS.SCISSORS)) {
+                return "The winner is a player named: " + firstPlyer.name;
+            } else if (firstPlyer.choice == secondPlayer.choice) {
+                return "Nobody won";
+            } else {
+                return "The winner is a player named: " + secondPlayer.name;
+        }
     }
 }
 

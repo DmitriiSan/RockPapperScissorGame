@@ -6,12 +6,6 @@ public enum VARIANTS {
 
     ROCK,
     PAPER,
-    SCISSORS;
+    SCISSORS
 
-    private static final Random random = new Random();
-
-    public static VARIANTS randomVARIANTS()  {
-        VARIANTS[] variants = values();
-        return variants[random.nextInt(variants.length)];
-    }
 }
